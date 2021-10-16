@@ -5,6 +5,8 @@ const livesBar = document.querySelector('#lives');
 const levelBar = document.querySelector('#level');
 const percentBar = document.querySelector('#percent');
 const switchBtn = document.querySelector('#switch');
+const overlay = document.querySelector('#overlay');
+const message = document.querySelector('#message');
 
 can.width = 400;
 can.height = 400;
@@ -31,6 +33,15 @@ function handleSwitchDirection(e) {
   can.classList.toggle('ew');
   switchBtn.textContent = 'Cut ' + (horiz ? '↕️' : '↔️');
   return false;
+}
+
+function showOverlay(msg) {
+  message.textContent = msg;
+  overlay.style.display = 'flex';
+}
+
+function hideOverlay() {
+  overlay.style.display = 'none';
 }
 
 can.addEventListener('click', e => {
@@ -278,9 +289,10 @@ function setLevel(newLevel) {
     balls.push(new Ball(x, y));
   }
   GAME_STATE = 'PLAY';
+  hideOverlay();
 }
 
-balls.push(new Ball(2,5));
+setLevel(1);
 animate();
 
 function animate(now) {
@@ -295,10 +307,12 @@ function animate(now) {
       }
       if (lives <= 0) {
         GAME_STATE = 'LOSE';
+        showOverlay('Game Over')
         setTimeout(() => { setLevel(1) }, 3000);
       } else if(grid.percent >= 75) {
         GAME_STATE = 'FINISH';
-        lives += 1 + Math.floor((grid.percent - 75)/5);
+        showOverlay(`Level ${level} Complete`);
+        lives += 1 + Math.floor((grid.percent - 75)/3);
         setTimeout(() => { setLevel(level + 1) }, 3000);
       }
     }
