@@ -12,6 +12,10 @@ body {
   font-family: 'Courier New', Courier, monospace;
 }
 
+h1, h2 {
+  color: white;
+}
+
 canvas {
   border: 1px solid white;
   cursor: ns-resize;
