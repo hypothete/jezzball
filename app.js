@@ -4,6 +4,7 @@ const resetBtn = document.querySelector('#reset');
 const livesBar = document.querySelector('#lives');
 const levelBar = document.querySelector('#level');
 const percentBar = document.querySelector('#percent');
+const switchBtn = document.querySelector('#switch');
 
 can.width = 400;
 can.height = 400;
@@ -17,19 +18,20 @@ let balls = [];
 let rays = [];
 
 let horiz = false;
-can.classList.add('ns');
+switchBtn.textContent = 'Cut ' + (horiz ? '↕️' : '↔️');
 
 let lives = 3;
 let level = 1;
 
 let GAME_STATE = 'PLAY'; // PLAY | FINISH | LOSE
 
-can.addEventListener('contextmenu', e => {
-  e.preventDefault();
+function handleSwitchDirection(e) {
+  e && e.preventDefault();
   horiz = !horiz;
   can.classList.toggle('ew');
+  switchBtn.textContent = 'Cut ' + (horiz ? '↕️' : '↔️');
   return false;
-});
+}
 
 can.addEventListener('click', e => {
   e.preventDefault();
@@ -45,6 +47,8 @@ can.addEventListener('click', e => {
 });
 
 resetBtn.addEventListener('click', e => setLevel(1));
+can.addEventListener('contextmenu', handleSwitchDirection);
+switchBtn.addEventListener('click', handleSwitchDirection);
 
 class Grid {
   constructor() {
