@@ -1,0 +1,37 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin: 0;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+canvas {
+  border: 1px solid white;
+  cursor: ns-resize;
+}
+
+.ew {
+  cursor: ew-resize;
+}
+
+#reset {
+  margin-top: 1rem;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+#scoreboard {
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#scoreboard > * {
+  margin: 1rem;
+}
