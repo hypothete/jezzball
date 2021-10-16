@@ -312,7 +312,7 @@ function animate(now) {
       } else if(grid.percent >= 75) {
         GAME_STATE = 'FINISH';
         showOverlay(`Level ${level} Complete`);
-        lives += 1 + Math.floor((grid.percent - 75)/3);
+        lives += 1 + Math.floor((grid.percent - 75)/7);
         setTimeout(() => { setLevel(level + 1) }, 3000);
       }
     }
