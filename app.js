@@ -294,8 +294,9 @@ function animate(now) {
         setTimeout(() => { setLevel(1) }, 3000);
       } else if(grid.percent >= 75) {
         GAME_STATE = 'FINISH';
-        const newLives = Math.max(Math.round((grid.percent - 90) / 5), 0);
-        lives += newLives;
+        if (grid.percent > 80) {
+          lives += 1;
+        }
         setTimeout(() => { setLevel(level + 1) }, 3000);
       }
     }
