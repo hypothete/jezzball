@@ -35,3 +35,17 @@ canvas {
 #scoreboard > * {
   margin: 1rem;
 }
+
+#github {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+}
+
+#github a {
+  color: #666;
+}
+
+#github a:hover {
+  color: #999;
+}
